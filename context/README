@@ -1,0 +1,19 @@
+# Dockerfile文件描述
+
+###  安诺混合云应用基础镜像Dockerfile
+
+*  依赖文件描述:
+1. Dockerfile     ：seqyuan-base基础镜像对应Dockerfile文件；
+4.  passwd         : 基础镜像账号体系依赖文件（用户名和UID、GID文件）
+5.  group          : 基础镜像账号和组关系依赖文件（用户名、组名、GID）
+9.  username       ：账号文件
+
+### 维护者信息描述
+  * 维护者姓名：苑赞
+  * 维护者邮箱：seqyuan@gmail.com
+  
+### 当前Dockerifle版本号
+>  release v0.1
+
+### 当前镜像版本描述信息
+>  v0.1基础镜像
