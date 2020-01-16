@@ -22,7 +22,7 @@ RUN R -e "install.packages('BiocManager', repos='https://mirrors.tuna.tsinghua.e
 RUN R -e "install.packages('devtools', repos='https://mirrors.tuna.tsinghua.edu.cn/CRAN/')"
 RUN apt-get install -y libhdf5-dev libudunits2-dev imagemagick
 #COPY Rprofile ~/.Rprofile
-RUN echo "GITHUB_PAT=8ef13f57f834b26d75350930db5139825d9e4982" >>~/.Renviron
+RUN echo "GITHUB_PAT=d976a8efad6881f1b474795f8ec6d4ab9ffdc4ca" >>~/.Renviron
 RUN R -e "devtools::install_github('dynverse/dyno')"
 RUN echo "export PATH=$PATH:/dockerbin" >> ~/.bashrc
 RUN R -e "install.packages('tidyverse', repos='https://mirrors.tuna.tsinghua.edu.cn/CRAN/')"
