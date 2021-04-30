@@ -27,7 +27,7 @@ RUN R -e "devtools::install_github('dynverse/dyno')"
 RUN echo "export PATH=$PATH:/dockerbin" >> ~/.bashrc
 RUN R -e "install.packages('tidyverse', repos='https://mirrors.tuna.tsinghua.edu.cn/CRAN/')"
 RUN R -e "BiocManager::install('mutoss')"
-RUN R -e "install.packages(c('Seurat'), repos='http://mirrors.tuna.tsinghua.edu.cn/CRAN/')"
+RUN R -e "install.packages(c('ggplot2', 'Seurat'), repos='http://mirrors.tuna.tsinghua.edu.cn/CRAN/')"
 
 EXPOSE 3889
 
