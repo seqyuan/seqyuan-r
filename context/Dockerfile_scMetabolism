@@ -1,0 +1,40 @@
+FROM r-base:latest
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+
+MAINTAINER Zan Yuan <seqyuan@gmail.com>
+
+RUN apt-get update && apt-get install -y \
+    sudo \
+    gdebi-core \
+    pandoc \
+    pandoc-citeproc \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
+    xtail \
+    libssl-dev \
+    build-essential \
+    libxml2-dev \
+    libhdf5-dev \
+    libudunits2-dev \
+    imagemagick \
+    wget
+
+
+RUN echo "options(BioC_mirror='https://mirrors.tuna.tsinghua.edu.cn/bioconductor')" >> ~/.Rprofile && \
+		echo "options('repos' = c(CRAN='https://mirrors.tuna.tsinghua.edu.cn/CRAN/'))" >> ~/.Rprofile
+
+RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
+
+RUN R -e "install.packages(c('devtools', 'ggplot2', 'ggupset', 'BiocManager', \
+    "data.table", "wesanderson", "Seurat", "AUCell", "GSEABase", \
+    "GSVA","rsvd")), repos='https://mirrors.tuna.tsinghua.edu.cn/CRAN/')" && \ 
+    R -e "devtools::install_github('YosefLab/VISION")" && \
+    R -e "devtools::install_github('wu-yc/scMetabolism')"
+
+ADD passwd /etc/
+ADD group /etc/
+
+ 
