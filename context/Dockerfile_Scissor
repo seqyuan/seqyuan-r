@@ -28,7 +28,7 @@ RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
     'data.table', 'Seurat'))"
 
 #RUN R -e "devtools::install_github('sunduanchen/Scissor', upgrade='never')"
-RUN R -e "devtools::install_github('YuLab-SMU/clusterProfiler', upgrade='never')"
+RUN R -e "devtools::build(binary = FALSE);devtools::install_github('YuLab-SMU/clusterProfiler', upgrade='never')"
 
 ADD context/passwd /etc/
 ADD context/group /etc/
