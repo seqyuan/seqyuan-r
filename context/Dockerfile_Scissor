@@ -22,15 +22,15 @@ RUN apt-get update && apt-get install -y \
     imagemagick \
     wget
 
-
 RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
 
 RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
     'data.table', 'Seurat'))"
-RUN R -e "devtools::install_github(c('sunduanchen/Scissor', 'YuLab-SMU/clusterProfiler'))"
 
+RUN R -e "devtools::install_github('sunduanchen/Scissor')"
+RUN R -e "devtools::install_github('YuLab-SMU/clusterProfiler')"
 
 ADD context/passwd /etc/
 ADD context/group /etc/
 
- 
+
