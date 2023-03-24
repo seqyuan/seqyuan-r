@@ -1,4 +1,4 @@
-FROM ghcr.io/seqyuan/scissor:latest
+FROM ghcr.io/seqyuan/r-biobase:1.0
 
 ADD passwd /etc/
 ADD group /etc/

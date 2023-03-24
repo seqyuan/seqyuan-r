@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     imagemagick \
     wget
 
-RUN Rscript -e "install.packages(c('remotes', 'ggplot2', 'Seurat', 'BiocManager', 'devtools'))"
+RUN Rscript -e "install.packages(c('remotes', 'ggplot2', 'Seurat', 'BiocManager', 'devtools', 'dplyr', 'rstatix'))"
 RUN Rscript -e "remotes::install_github('sunduanchen/Scissor', upgrade='never')"
 RUN Rscript -e "remotes::install_github('YuLab-SMU/clusterProfiler', upgrade='never')"
 
