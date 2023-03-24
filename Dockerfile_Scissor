@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 ADD ./scissor_packages.R /tmp/scissor_packages.R
 
-RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
+#RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
 RUN Rscript -e "install.packages('remotes')"
 RUN Rscript -e "remotes::install_github('sunduanchen/Scissor', upgrade='never')"
 
