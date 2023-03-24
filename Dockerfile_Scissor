@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 #    imagemagick \
 #    wget
 
-ADD context/scissor_packages.R /scissor_packages.R
+ADD ./scissor_packages.R /tmp/scissor_packages.R
 
 RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
 RUN Rscript -e "install.packages('remotes')"
@@ -29,7 +29,8 @@ RUN Rscript -e "remotes::install_github('sunduanchen/Scissor', upgrade='never')"
 #CMD ["Rscript", "/scissor_packages.R"]
 
 
-#RUN Rscript /scissor_packages.R
+RUN Rscript /scissor_packages.R
+
 #RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
 #    'data.table', 'Seurat'))"
 #RUN git clone git@github.com:sunduanchen/Scissor.git && gzip Scissor
