@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN Rscript -e "install.packages(c('remotes', 'ggplot2', 'Seurat', 'BiocManager', 'devtools'))"
 RUN Rscript -e "remotes::install_github('sunduanchen/Scissor', upgrade='never')"
+RUN Rscript -e "remotes::install_github('YuLab-SMU/clusterProfiler', upgrade='never')
 
 #ADD context/passwd /etc/
 #ADD context/group /etc/
