@@ -22,16 +22,18 @@ RUN apt-get update && apt-get install -y \
     imagemagick \
     wget
 
-RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
+ADD context/scissor_packages.R /scissor_packages.R
 
-RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
+RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
+RUN Rscript /scissor_packages.R
+#RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
     'data.table', 'Seurat'))"
-RUN git clone git@github.com:sunduanchen/Scissor.git && gzip Scissor
-RUN R -e "devtools::install_local('Scissor.zip')"
+#RUN git clone git@github.com:sunduanchen/Scissor.git && gzip Scissor
+#RUN R -e "devtools::install_local('Scissor.zip')"
 #RUN R -e "devtools::install_github('sunduanchen/Scissor', upgrade='never')"
 #RUN R -e "devtools::build(binary = FALSE);devtools::install_github('YuLab-SMU/clusterProfiler', upgrade='never')"
 
-ADD context/passwd /etc/
-ADD context/group /etc/
+#ADD context/passwd /etc/
+#ADD context/group /etc/
 
 
