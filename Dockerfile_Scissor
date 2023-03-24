@@ -7,38 +7,21 @@ MAINTAINER Zan Yuan <seqyuan@gmail.com>
 
 RUN apt-get update && apt-get install -y \
     sudo \
-#    gdebi-core \
+    gdebi-core \
     libcurl4-gnutls-dev \
     libcairo2-dev \
     libxt-dev \
-#    xtail \
+    xtail \
     libssl-dev \
-#    build-essential \
+    build-essential \
     libxml2-dev \
     libhdf5-dev \
     libudunits2-dev
-#    imagemagick \
-#    wget
+    imagemagick \
+    wget
 
-ADD ./scissor_packages.R /tmp/scissor_packages.R
-
-#RUN echo "GITHUB_PAT=8ef1xxxxxxx50930dxxxx5d9e4982" >>~/.Renviron
-RUN Rscript -e "install.packages('remotes')"
+RUN Rscript -e "install.packages('remotes', 'ggplot2', 'Seurat', 'BiocManager', 'devtools')"
 RUN Rscript -e "remotes::install_github('sunduanchen/Scissor', upgrade='never')"
-
-#CMD ["Rscript", "/scissor_packages.R"]
-
-
-RUN Rscript /scissor_packages.R
-
-#RUN R -e "install.packages(c('devtools', 'ggplot2', 'BiocManager', \
-#    'data.table', 'Seurat'))"
-#RUN git clone git@github.com:sunduanchen/Scissor.git && gzip Scissor
-#RUN R -e "devtools::install_local('Scissor.zip')"
-#RUN R -e "devtools::install_github('sunduanchen/Scissor', upgrade='never')"
-#RUN R -e "devtools::build(binary = FALSE);devtools::install_github('YuLab-SMU/clusterProfiler', upgrade='never')"
 
 #ADD context/passwd /etc/
 #ADD context/group /etc/
-
-
