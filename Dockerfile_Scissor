@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libxml2-dev \
     libhdf5-dev \
-    libudunits2-dev
+    libudunits2-dev \
     imagemagick \
     wget
 
